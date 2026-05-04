@@ -1,113 +1,373 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TypeCraft — Maîtrisez la frappe au clavier</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TypeCraft — Master the Art of Typing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
+  <div id="app">
 
-<!-- NAVBAR -->
-<nav class="navbar">
-  <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
-  <div class="navbar__nav">
-    {% if user %}
-      <a href="{{ url_for('dashboard') }}" class="navbar__link">Tableau de bord</a>
-      <a href="{{ url_for('logout') }}" class="btn btn--ghost btn--sm">Déconnexion</a>
-    {% else %}
-      <a href="{{ url_for('login') }}" class="navbar__link">Connexion</a>
-      <a href="{{ url_for('register') }}" class="btn btn--primary btn--sm">Commencer</a>
-    {% endif %}
-  </div>
-</nav>
+    <!-- ═══════════════════════════════════════════
+         SCREEN 1: LANDING / HOME
+    ═══════════════════════════════════════════ -->
+    <div id="screen-home" class="screen active">
+      <div class="noise-overlay"></div>
+      <div class="grid-bg"></div>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero__glow"></div>
-  <div style="position:relative; z-index:1">
-    <div class="hero__badge">
-      🌍 &nbsp; Arabe · Anglais · Français
-    </div>
-    <h1 class="hero__title">
-      Tapez plus vite,<br>
-      <span class="accent">sans regarder.</span>
-    </h1>
-    <p class="hero__subtitle">
-      TypeCraft est la plateforme d'entraînement à la frappe aveugle la plus moderne.
-      Progressez à votre rythme avec des leçons adaptées, des analyses en temps réel
-      et un système de récompenses motivant.
-    </p>
-    <div class="hero__cta">
-      {% if user %}
-        <a href="{{ url_for('dashboard') }}" class="btn btn--primary btn--lg">Continuer l'entraînement ⚡</a>
-      {% else %}
-        <a href="{{ url_for('register') }}" class="btn btn--primary btn--lg">Créer un compte gratuit</a>
-        <a href="{{ url_for('login') }}" class="btn btn--ghost btn--lg">Se connecter</a>
-      {% endif %}
-    </div>
+      <nav class="top-nav">
+        <div class="logo">
+          <span class="logo-icon">⌨</span>
+          <span class="logo-text">TypeCraft</span>
+        </div>
+        <div class="nav-actions">
+          <div id="nav-guest" class="nav-guest">
+            <button class="btn-ghost" onclick="showModal('login')">Sign In</button>
+            <button class="btn-primary" onclick="showModal('register')">Get Started</button>
+          </div>
+          <div id="nav-user" class="nav-user hidden">
+            <div class="xp-badge">
+              <span class="xp-icon">⚡</span>
+              <span id="nav-xp">0 XP</span>
+            </div>
+            <div class="streak-badge">
+              <span>🔥</span>
+              <span id="nav-streak">0</span>
+            </div>
+            <button class="btn-ghost" onclick="showScreen('profile')">Profile</button>
+            <button class="btn-ghost" onclick="logoutUser()">Logout</button>
+          </div>
+        </div>
+      </nav>
 
-    <div class="hero__stats">
-      <div>
-        <div class="hero__stat-num">3</div>
-        <div class="hero__stat-label">Langues</div>
+      <main class="hero">
+        <div class="hero-badge">
+          <span class="pulse-dot"></span>
+          Level up your typing game
+        </div>
+        <h1 class="hero-title">
+          Type Without
+          <span class="gradient-text">Looking Down</span>
+        </h1>
+        <p class="hero-sub">Master touch typing in English, Arabic, and French. Interactive lessons, real-time stats, and daily challenges.</p>
+
+        <div class="lang-cards">
+          <div class="lang-card" onclick="selectLanguage('en')">
+            <div class="lang-flag">🇺🇸</div>
+            <div class="lang-name">English</div>
+            <div class="lang-hint">QWERTY Layout</div>
+            <div class="lang-direction">LTR →</div>
+          </div>
+          <div class="lang-card" onclick="selectLanguage('ar')">
+            <div class="lang-flag">🇸🇦</div>
+            <div class="lang-name">العربية</div>
+            <div class="lang-hint">لوحة مفاتيح عربية</div>
+            <div class="lang-direction">RTL ←</div>
+          </div>
+          <div class="lang-card" onclick="selectLanguage('fr')">
+            <div class="lang-flag">🇫🇷</div>
+            <div class="lang-name">Français</div>
+            <div class="lang-hint">Clavier AZERTY</div>
+            <div class="lang-direction">LTR →</div>
+          </div>
+        </div>
+
+        <button class="daily-btn" onclick="startDailyChallenge()">
+          <span class="daily-icon">🏆</span>
+          Today's Challenge
+          <span class="arrow">→</span>
+        </button>
+      </main>
+
+      <div class="stats-ticker">
+        <div class="ticker-inner">
+          <span>⚡ Average WPM: 45</span>
+          <span>🎯 Accuracy Rate: 92%</span>
+          <span>🔥 Active Streaks: 1,284</span>
+          <span>🌍 3 Languages Supported</span>
+          <span>⭐ 10 Levels per Language</span>
+          <span>⚡ Average WPM: 45</span>
+          <span>🎯 Accuracy Rate: 92%</span>
+          <span>🔥 Active Streaks: 1,284</span>
+        </div>
       </div>
-      <div>
-        <div class="hero__stat-num">40+</div>
-        <div class="hero__stat-label">Leçons</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCREEN 2: LEVEL SELECT
+    ═══════════════════════════════════════════ -->
+    <div id="screen-levels" class="screen hidden">
+      <div class="noise-overlay"></div>
+
+      <nav class="top-nav">
+        <button class="back-btn" onclick="showScreen('home')">← Back</button>
+        <div class="logo">TypeCraft</div>
+        <div id="levels-user-info" class="nav-user-info"></div>
+      </nav>
+
+      <div class="levels-container">
+        <div class="levels-header">
+          <div id="lang-icon" class="lang-display-icon">🇺🇸</div>
+          <div>
+            <h2 id="lang-title" class="levels-title">English</h2>
+            <p id="lang-sub" class="levels-sub">Select your lesson</p>
+          </div>
+        </div>
+
+        <div id="levels-grid" class="levels-grid">
+          <!-- Dynamically injected -->
+        </div>
       </div>
-      <div>
-        <div class="hero__stat-num">∞</div>
-        <div class="hero__stat-label">Pratique</div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCREEN 3: TYPING PRACTICE
+    ═══════════════════════════════════════════ -->
+    <div id="screen-practice" class="screen hidden">
+      <div class="noise-overlay"></div>
+
+      <nav class="top-nav practice-nav">
+        <button class="back-btn" onclick="showScreen('levels')">← Levels</button>
+        <div class="practice-info">
+          <span id="practice-level-badge" class="level-badge">Level 1</span>
+          <span id="practice-title-nav" class="practice-title-nav">Home Row Keys</span>
+        </div>
+        <button class="btn-ghost sm" onclick="resetPractice()">↺ Restart</button>
+      </nav>
+
+      <div class="practice-container">
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+          <div class="stat-item">
+            <div id="stat-wpm" class="stat-value">0</div>
+            <div class="stat-label">WPM</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div id="stat-acc" class="stat-value">100%</div>
+            <div class="stat-label">Accuracy</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div id="stat-errors" class="stat-value">0</div>
+            <div class="stat-label">Errors</div>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <div id="stat-time" class="stat-value">0s</div>
+            <div class="stat-label">Time</div>
+          </div>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-track">
+          <div id="progress-fill" class="progress-fill" style="width:0%"></div>
+        </div>
+
+        <!-- Text Display -->
+        <div class="text-display-wrapper">
+          <div id="text-display" class="text-display" dir="ltr">
+            <!-- Characters will be injected here -->
+          </div>
+        </div>
+
+        <!-- Input Area -->
+        <div class="input-area">
+          <textarea
+            id="typing-input"
+            class="typing-input"
+            placeholder="Start typing here..."
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            dir="ltr"
+          ></textarea>
+          <div class="input-hint">
+            <span class="key-hint">Click here and start typing</span>
+          </div>
+        </div>
+
+        <!-- Virtual Keyboard — يُبنى ديناميكياً بواسطة keyboard.js -->
+        <div id="keyboard-display" class="keyboard-display enhanced-kb">
+          <div class="kb-loading" style="text-align:center;padding:1rem;color:var(--text-3);font-size:.8rem">
+            ⌨ Loading keyboard...
+          </div>
+        </div>
+
+        <!-- شريط المفتاح التالي -->
+        <div id="next-key-bar" class="next-key-hint" style="display:none">
+          <span style="font-size:.75rem;color:var(--text-3)">Next key:</span>
+          <span id="hint-char-display" class="hint-char">a</span>
+          <span id="hint-finger-display" style="font-size:.75rem;color:var(--text-3)"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCREEN 4: RESULTS
+    ═══════════════════════════════════════════ -->
+    <div id="screen-results" class="screen hidden">
+      <div class="noise-overlay"></div>
+
+      <div class="results-container">
+        <div class="results-card">
+          <div class="results-header">
+            <div id="results-rank" class="results-rank">🏅</div>
+            <h2 class="results-title">Session Complete!</h2>
+            <p id="results-subtitle" class="results-subtitle">Level 1 — Home Row Keys</p>
+          </div>
+
+          <div class="results-stats">
+            <div class="result-stat wpm">
+              <div id="res-wpm" class="result-value">0</div>
+              <div class="result-label">Words / Minute</div>
+            </div>
+            <div class="result-stat acc">
+              <div id="res-acc" class="result-value">0%</div>
+              <div class="result-label">Accuracy</div>
+            </div>
+            <div class="result-stat err">
+              <div id="res-err" class="result-value">0</div>
+              <div class="result-label">Errors</div>
+            </div>
+            <div class="result-stat xp">
+              <div id="res-xp" class="result-value">+0</div>
+              <div class="result-label">XP Earned</div>
+            </div>
+          </div>
+
+          <div id="badges-earned" class="badges-earned hidden">
+            <h3 class="badges-title">🏆 New Badges!</h3>
+            <div id="badges-list" class="badges-list"></div>
+          </div>
+
+          <div id="level-up-msg" class="level-up-msg hidden">
+            <span class="level-up-icon">⬆</span>
+            Next level unlocked!
+          </div>
+
+          <div class="results-actions">
+            <button class="btn-primary lg" onclick="goNextLevel()">Next Level →</button>
+            <button class="btn-ghost lg" onclick="retryLesson()">↺ Retry</button>
+            <button class="btn-ghost lg" onclick="showScreen('levels')">All Levels</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         SCREEN 5: PROFILE
+    ═══════════════════════════════════════════ -->
+    <div id="screen-profile" class="screen hidden">
+      <div class="noise-overlay"></div>
+
+      <nav class="top-nav">
+        <button class="back-btn" onclick="showScreen('home')">← Home</button>
+        <div class="logo">Profile</div>
+        <div></div>
+      </nav>
+
+      <div class="profile-container">
+        <div class="profile-card">
+          <div class="profile-avatar">
+            <div id="profile-initial" class="avatar-circle">A</div>
+            <div id="profile-username" class="profile-username">Username</div>
+            <div id="profile-xp-display" class="profile-xp">0 XP</div>
+          </div>
+
+          <div class="profile-streak">
+            <span class="streak-fire">🔥</span>
+            <span id="profile-streak-val">0</span>
+            <span class="streak-text">day streak</span>
+          </div>
+        </div>
+
+        <div class="profile-stats-grid">
+          <div class="profile-stat-card">
+            <div id="prof-best-wpm" class="prof-stat-val">0</div>
+            <div class="prof-stat-label">Best WPM</div>
+          </div>
+          <div class="profile-stat-card">
+            <div id="prof-avg-acc" class="prof-stat-val">0%</div>
+            <div class="prof-stat-label">Avg Accuracy</div>
+          </div>
+          <div class="profile-stat-card">
+            <div id="prof-sessions" class="prof-stat-val">0</div>
+            <div class="prof-stat-label">Sessions</div>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <h3 class="chart-title">Progress Over Time</h3>
+          <canvas id="progressChart" height="200"></canvas>
+        </div>
+
+        <div class="lang-progress-section">
+          <h3 class="section-title">Language Progress</h3>
+          <div id="lang-progress-cards" class="lang-progress-cards"></div>
+        </div>
+
+        <div class="badges-section">
+          <h3 class="section-title">Badges</h3>
+          <div id="all-badges" class="all-badges"></div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end #app -->
+
+  <!-- ═══════════════════════════════════════════
+       MODALS: Login / Register
+  ═══════════════════════════════════════════ -->
+  <div id="modal-overlay" class="modal-overlay hidden" onclick="closeModal(event)">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeModal()">✕</button>
+
+      <div id="modal-login" class="modal-content hidden">
+        <h2 class="modal-title">Welcome Back</h2>
+        <p class="modal-sub">Sign in to continue your journey</p>
+        <div class="form-group">
+          <input id="login-user" class="form-input" type="text" placeholder="Username" />
+        </div>
+        <div class="form-group">
+          <input id="login-pass" class="form-input" type="password" placeholder="Password" />
+        </div>
+        <div id="login-error" class="form-error hidden"></div>
+        <button class="btn-primary full" onclick="doLogin()">Sign In</button>
+        <p class="modal-switch">No account? <a onclick="showModal('register')">Register</a></p>
+      </div>
+
+      <div id="modal-register" class="modal-content hidden">
+        <h2 class="modal-title">Create Account</h2>
+        <p class="modal-sub">Start your typing journey today</p>
+        <div class="form-group">
+          <input id="reg-user" class="form-input" type="text" placeholder="Username" />
+        </div>
+        <div class="form-group">
+          <input id="reg-email" class="form-input" type="email" placeholder="Email" />
+        </div>
+        <div class="form-group">
+          <input id="reg-pass" class="form-input" type="password" placeholder="Password" />
+        </div>
+        <div id="reg-error" class="form-error hidden"></div>
+        <button class="btn-primary full" onclick="doRegister()">Create Account</button>
+        <p class="modal-switch">Already registered? <a onclick="showModal('login')">Sign in</a></p>
       </div>
     </div>
   </div>
-</section>
 
-<!-- FEATURES -->
-<section class="features">
-  <h2 class="section-title">Pourquoi TypeCraft ?</h2>
-  <p class="section-sub">Une expérience conçue pour vous faire progresser rapidement et durablement.</p>
+  <!-- Error sound (base64 beep) -->
+  <audio id="error-sound" src="data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAA..." preload="auto"></audio>
 
-  <div class="features__grid">
-    <div class="feature-card">
-      <div class="feature-card__icon">⌨️</div>
-      <div class="feature-card__title">Frappe en temps réel</div>
-      <div class="feature-card__desc">Chaque caractère est analysé instantanément. Erreurs surlignées, curseur animé, retour visuel immédiat.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">📊</div>
-      <div class="feature-card__title">Analytics WPM & Précision</div>
-      <div class="feature-card__desc">Suivez votre vitesse (mots/min), votre précision et votre progression leçon par leçon.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">🏆</div>
-      <div class="feature-card__title">Système XP & Badges</div>
-      <div class="feature-card__desc">Gagnez de l'expérience, montez de niveau et débloquez des badges de réussite.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">🌍</div>
-      <div class="feature-card__title">Trilingue</div>
-      <div class="feature-card__desc">Entraînez-vous en arabe (RTL), en anglais et en français avec des leçons adaptées à chaque langue.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">🔓</div>
-      <div class="feature-card__title">Progression par niveaux</div>
-      <div class="feature-card__desc">Les leçons avancées se débloquent automatiquement quand vous atteignez le score minimum requis.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">🔥</div>
-      <div class="feature-card__title">Streak quotidien</div>
-      <div class="feature-card__desc">Maintenez votre série de jours consécutifs et restez motivé pour pratiquer chaque jour.</div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  Fait avec ❤️ par <span>TypeCraft</span> — Plateforme open-source d'apprentissage de la frappe
-</footer>
-
-<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+  <!-- ✦ إضافات جديدة — يجب أن تكون بعد app.js ✦ -->
+  <script src="{{ url_for('static', filename='js/keyboard.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/levels.js') }}"></script>
 </body>
 </html>
