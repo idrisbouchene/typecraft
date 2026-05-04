@@ -193,7 +193,31 @@ def lesson(language, lesson_id):
         progress=progress
     )
 
+# ─────────────────────────────────────────────
+#  API — PROFILE (أضفه هنا مباشرة فوق save_session)
+# ─────────────────────────────────────────────
+@app.route("/api/profile")
+@login_required
+def api_profile():
+    user_id = session["user_id"]
+    user = get_user_by_id(user_id)
+    stats = get_user_stats(user_id)
 
+    return jsonify({
+        "username": user["username"],
+        "xp": user["xp"],
+        "streak": user["streak"],
+        "best_wpm": stats.get("best_wpm", 0),
+        "avg_accuracy": stats.get("avg_accuracy", 0),
+        "total_sessions": stats.get("total_sessions", 0),
+        "progress": {
+            "en": get_progress(user_id, "en"),
+            "ar": get_progress(user_id, "ar"),
+            "fr": get_progress(user_id, "fr")
+        },
+        "badges": get_user_badges(user_id),
+        "chart_data": stats.get("chart_data", [])
+    })
 # ─────────────────────────────────────────────────────────────
 #  API — Sauvegarde d'une session
 # ─────────────────────────────────────────────────────────────
