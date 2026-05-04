@@ -1,0 +1,266 @@
+{
+  "en": {
+    "keys": [
+      {
+        "id": "en_keys_1",
+        "title": "Home Row — ASDF JKL;",
+        "level": 1,
+        "description": "Master the home row keys: A S D F J K L ;",
+        "content": "aaa sss ddd fff jjj kkk lll asd fj kl asdf jkl asdfjkl asdfjkl asd jkl fff jjj",
+        "duration": 60
+      },
+      {
+        "id": "en_keys_2",
+        "title": "Home Row Extended — GH",
+        "level": 1,
+        "description": "Add G and H to your home row practice",
+        "content": "ggg hhh asg dhj fgh jkl asdg fghj asdfgh jklhg gasd hjkl ghgh asdg fjkl ghjk",
+        "duration": 60
+      },
+      {
+        "id": "en_keys_3",
+        "title": "Top Row — QWERTY",
+        "level": 2,
+        "description": "Practice the top row: Q W E R T Y U I O P",
+        "content": "qqq www eee rrr ttt yyy uuu iii ooo ppp qwer tyui qwerty yuiop qwertyuiop",
+        "duration": 90
+      },
+      {
+        "id": "en_keys_4",
+        "title": "Bottom Row — ZXCVBNM",
+        "level": 2,
+        "description": "Practice the bottom row: Z X C V B N M",
+        "content": "zzz xxx ccc vvv bbb nnn mmm zxcv bnm zxcvbnm bnmzxcv zxb cvn mnb zxcvbnm",
+        "duration": 90
+      }
+    ],
+    "words": [
+      {
+        "id": "en_words_1",
+        "title": "Common Words — Level 1",
+        "level": 1,
+        "description": "Practice the most common English words",
+        "content": "the and for are you that was with his they have this will your from one had but words",
+        "duration": 90
+      },
+      {
+        "id": "en_words_2",
+        "title": "Common Words — Level 2",
+        "level": 2,
+        "description": "More frequently used English words",
+        "content": "about which when there their said each she many time has look two more write go see number way could people",
+        "duration": 90
+      },
+      {
+        "id": "en_words_3",
+        "title": "Action Verbs",
+        "level": 2,
+        "description": "Practice common action verbs",
+        "content": "run jump sit stand walk talk think learn create build make find keep give work play sleep eat drink read write",
+        "duration": 90
+      }
+    ],
+    "sentences": [
+      {
+        "id": "en_sent_1",
+        "title": "Simple Sentences",
+        "level": 2,
+        "description": "Practice typing complete sentences",
+        "content": "The quick brown fox jumps over the lazy dog. She sells sea shells by the sea shore. How much wood would a woodchuck chuck.",
+        "duration": 120
+      },
+      {
+        "id": "en_sent_2",
+        "title": "Tech Sentences",
+        "level": 3,
+        "description": "Technology-themed sentences",
+        "content": "The computer is a powerful tool for learning. Typing fast requires daily practice and focus. Software developers write code to build applications. The internet connects billions of people worldwide.",
+        "duration": 120
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "en_para_1",
+        "title": "The Power of Practice",
+        "level": 3,
+        "description": "A motivational paragraph about learning",
+        "content": "Learning to type without looking at the keyboard is a skill that takes time and dedication. Every expert was once a beginner who refused to give up. With consistent practice, your fingers will memorize the position of every key. Speed will come naturally as accuracy improves. The journey of a thousand miles begins with a single keystroke.",
+        "duration": 180
+      },
+      {
+        "id": "en_para_2",
+        "title": "The Digital Age",
+        "level": 4,
+        "description": "A paragraph about technology",
+        "content": "We live in a world increasingly driven by technology. Computers, smartphones, and tablets have transformed how we work, communicate, and learn. Touch typing is no longer just a skill for secretaries—it is essential for everyone in the modern workforce. Those who can type quickly and accurately gain a significant advantage in productivity and efficiency.",
+        "duration": 180
+      }
+    ]
+  },
+
+  "fr": {
+    "keys": [
+      {
+        "id": "fr_keys_1",
+        "title": "Rangée Centrale — QSDF JKL",
+        "level": 1,
+        "description": "Maîtrisez les touches centrales du clavier AZERTY",
+        "content": "qqq sss ddd fff jjj kkk lll qsd fjk lm qsdf jkl qsdfjkl qsdfjkl qsd jkl fff jjj",
+        "duration": 60
+      },
+      {
+        "id": "fr_keys_2",
+        "title": "Rangée du Haut — AZERTY",
+        "level": 1,
+        "description": "Pratiquez la rangée supérieure : A Z E R T Y U I O P",
+        "content": "aaa zzz eee rrr ttt yyy uuu iii ooo ppp azert yuio azerty yuiop azertyuiop",
+        "duration": 90
+      },
+      {
+        "id": "fr_keys_3",
+        "title": "Rangée du Bas — WXCVBN",
+        "level": 2,
+        "description": "Pratiquez la rangée inférieure : W X C V B N",
+        "content": "www xxx ccc vvv bbb nnn wxcv bn wxcvbn bnwxcv wxb cvn nb wxcvbn",
+        "duration": 90
+      }
+    ],
+    "words": [
+      {
+        "id": "fr_words_1",
+        "title": "Mots Courants — Niveau 1",
+        "level": 1,
+        "description": "Les mots français les plus utilisés",
+        "content": "le la les des une un et en du de se ce qui que par sur avec pour pas plus tout dans",
+        "duration": 90
+      },
+      {
+        "id": "fr_words_2",
+        "title": "Mots Courants — Niveau 2",
+        "level": 2,
+        "description": "Mots français de niveau intermédiaire",
+        "content": "aussi bien alors comme faire avoir être aller voir venir prendre donner savoir pouvoir vouloir devoir trouver croire penser",
+        "duration": 90
+      }
+    ],
+    "sentences": [
+      {
+        "id": "fr_sent_1",
+        "title": "Phrases Simples",
+        "level": 2,
+        "description": "Pratiquez des phrases complètes en français",
+        "content": "Portez ce vieux whisky au juge blond qui fume. Le chat dort sur le canapé rouge. La vie est belle quand on fait ce qu'on aime.",
+        "duration": 120
+      },
+      {
+        "id": "fr_sent_2",
+        "title": "Phrases sur la Technologie",
+        "level": 3,
+        "description": "Phrases thématiques sur la technologie",
+        "content": "L'ordinateur est un outil puissant pour apprendre. La frappe rapide requiert de la pratique quotidienne. Les développeurs créent des logiciels pour résoudre des problèmes. Internet relie des milliards de personnes dans le monde entier.",
+        "duration": 120
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "fr_para_1",
+        "title": "La Puissance de la Pratique",
+        "level": 3,
+        "description": "Un paragraphe motivant sur l'apprentissage",
+        "content": "Apprendre à taper sans regarder le clavier est une compétence qui demande du temps et de la persévérance. Chaque expert était autrefois un débutant qui a refusé d'abandonner. Avec une pratique régulière, vos doigts mémoriseront la position de chaque touche. La vitesse viendra naturellement à mesure que la précision s'améliorera.",
+        "duration": 180
+      }
+    ]
+  },
+
+  "ar": {
+    "keys": [
+      {
+        "id": "ar_keys_1",
+        "title": "الصف الأوسط — أ س د ف",
+        "level": 1,
+        "description": "تعلم أصابعك على الأحرف الأساسية في الصف الأوسط",
+        "content": "ا س د ف ج ك ل م اسد فجك لم اسدف جكل اسدفجكل اسد جكل فجك اسدف",
+        "duration": 60
+      },
+      {
+        "id": "ar_keys_2",
+        "title": "الصف العلوي — ض ص ث ق",
+        "level": 1,
+        "description": "تدرب على أحرف الصف العلوي من لوحة المفاتيح",
+        "content": "ض ص ث ق ف غ ع ه خ ح ضص ثق فغ عه خح ضصث قفغ عهخ ضصثقفغعهخ",
+        "duration": 90
+      },
+      {
+        "id": "ar_keys_3",
+        "title": "الصف السفلي — ز ش س",
+        "level": 2,
+        "description": "تدرب على أحرف الصف السفلي",
+        "content": "ز ش س ي ب ل ا ت ن م زش سي بل ات نم زشس يبل اتن زشسيبلاتنم",
+        "duration": 90
+      }
+    ],
+    "words": [
+      {
+        "id": "ar_words_1",
+        "title": "الكلمات الشائعة — المستوى الأول",
+        "level": 1,
+        "description": "تدرب على الكلمات العربية الأكثر استخداماً",
+        "content": "في من على أن هذا إلى كان قد لا ما مع كل هو هي أو لم ذلك التي",
+        "duration": 90
+      },
+      {
+        "id": "ar_words_2",
+        "title": "الكلمات الشائعة — المستوى الثاني",
+        "level": 2,
+        "description": "كلمات عربية متوسطة المستوى",
+        "content": "أيضاً حتى عند عليه لكن يمكن وقد كانت لهم منهم وهو وهي أنها وقال بعد قبل",
+        "duration": 90
+      },
+      {
+        "id": "ar_words_3",
+        "title": "كلمات التقنية",
+        "level": 2,
+        "description": "مصطلحات تقنية شائعة",
+        "content": "حاسوب برنامج إنترنت بيانات شبكة تقنية رقمي ذكاء اصطناعي تطبيق موقع إلكتروني",
+        "duration": 90
+      }
+    ],
+    "sentences": [
+      {
+        "id": "ar_sent_1",
+        "title": "جمل بسيطة",
+        "level": 2,
+        "description": "تدرب على كتابة جمل كاملة باللغة العربية",
+        "content": "العلم في الصغر كالنقش على الحجر. من جد وجد ومن زرع حصد. الوقت من ذهب فلا تضيعه.",
+        "duration": 120
+      },
+      {
+        "id": "ar_sent_2",
+        "title": "جمل عن التقنية",
+        "level": 3,
+        "description": "جمل تقنية ومعلوماتية",
+        "content": "الحاسوب أداة قوية للتعلم والإبداع. الكتابة السريعة تتطلب التدريب اليومي المستمر. المبرمجون يكتبون الكود لبناء التطبيقات الحديثة.",
+        "duration": 120
+      }
+    ],
+    "paragraphs": [
+      {
+        "id": "ar_para_1",
+        "title": "قوة التدريب",
+        "level": 3,
+        "description": "مقطع تحفيزي عن التعلم والمثابرة",
+        "content": "تعلم الكتابة دون النظر إلى لوحة المفاتيح مهارة تستحق الاستثمار. كل خبير كان في البداية مبتدئاً لم يستسلم أمام الصعاب. مع التدريب المنتظم، ستحفظ أصابعك موضع كل حرف بشكل تلقائي. ستتحسن سرعتك تلقائياً كلما ارتفعت دقتك في الكتابة. الطريق إلى الاحتراف تبدأ بضغطة مفتاح واحدة.",
+        "duration": 180
+      },
+      {
+        "id": "ar_para_2",
+        "title": "عصر المعلومات",
+        "level": 4,
+        "description": "مقطع عن التحول الرقمي",
+        "content": "نعيش في عالم يتسارع فيه التحول الرقمي بشكل غير مسبوق. أصبحت أجهزة الحاسوب والهواتف الذكية جزءاً لا يتجزأ من حياتنا اليومية. مهارة الطباعة السريعة لم تعد حكراً على المحترفين، بل باتت ضرورة للجميع في سوق العمل الحديث. من يتقن هذه المهارة يكتسب ميزة تنافسية حقيقية في الإنتاجية والكفاءة.",
+        "duration": 180
+      }
+    ]
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tableau de bord — TypeCraft</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
+  <div class="navbar__nav">
+    <a href="{{ url_for('dashboard') }}" class="navbar__link navbar__link--active">Dashboard</a>
+    <a href="{{ url_for('logout') }}" class="btn btn--ghost btn--sm">Déconnexion</a>
+  </div>
+</nav>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div style="max-width:900px;margin:1rem auto;padding:0 1.5rem">
+      {% for cat, msg in messages %}
+        <div class="flash flash--{{ cat }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+<!-- DASHBOARD GRID -->
+<div class="dashboard">
+
+  <!-- ═══ SIDEBAR ══════════════════════════════════════════ -->
+  <aside class="sidebar">
+
+    <!-- Profile card -->
+    <div class="card">
+      <div class="profile-avatar">{{ user['username'][0].upper() }}</div>
+      <div class="profile-name">{{ user['username'] }}</div>
+      <div class="profile-level">Niveau {{ user['level'] }} • 🔥 {{ user['streak'] }} jours</div>
+      <div class="xp-bar">
+        <div class="xp-bar__fill" data-target="{{ xp_progress }}" style="width:0%"></div>
+      </div>
+      <div class="xp-text">
+        <span>{{ user['xp'] }} XP</span>
+        <span>→ {{ xp_for_next }} XP</span>
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="card">
+      <div class="card__title">📊 Statistiques</div>
+      <div class="stats-grid">
+        <div class="stat-pill">
+          <div class="stat-pill__val">{{ (stats.avg_wpm or 0)|int }}</div>
+          <div class="stat-pill__key">WPM moyen</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill__val">{{ (stats.max_wpm or 0)|int }}</div>
+          <div class="stat-pill__key">Meilleur WPM</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill__val">{{ (stats.avg_accuracy or 0)|int }}%</div>
+          <div class="stat-pill__key">Précision</div>
+        </div>
+        <div class="stat-pill">
+          <div class="stat-pill__val">{{ stats.completed_lessons or 0 }}</div>
+          <div class="stat-pill__key">Leçons</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="card">
+      <div class="card__title">🏆 Classement</div>
+      {% for row in board %}
+        <div class="leaderboard-row">
+          <span class="lb-rank {% if loop.index == 1 %}gold{% elif loop.index == 2 %}silver{% elif loop.index == 3 %}bronze{% endif %}">
+            {% if loop.index <= 3 %}{{ ['🥇','🥈','🥉'][loop.index-1] }}{% else %}{{ loop.index }}{% endif %}
+          </span>
+          <span class="lb-name">{{ row.username }}</span>
+          <span class="lb-xp">{{ row.xp }} XP</span>
+        </div>
+      {% else %}
+        <p style="color:var(--text-3);font-size:.85rem">Aucun score encore.</p>
+      {% endfor %}
+    </div>
+
+  </aside>
+
+  <!-- ═══ MAIN CONTENT ══════════════════════════════════════ -->
+  <main class="main-content">
+
+    <!-- Language tabs -->
+    <div class="card" style="padding:1rem 1.5rem">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+        <h2 style="font-weight:800;font-size:1.25rem">Choisissez votre langue</h2>
+        <div class="lang-tabs">
+          <button class="lang-tab" data-lang="en">🇬🇧 English</button>
+          <button class="lang-tab" data-lang="fr">🇫🇷 Français</button>
+          <button class="lang-tab" data-lang="ar">🇩🇿 العربية</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── English lessons ──────────────────────────────── -->
+    <div class="card lang-panel" data-lang="en">
+      <div class="card__title">🇬🇧 English Lessons</div>
+
+      {% set progress_en = namespace(data={}) %}
+      {% for cat, cat_lessons in lessons.en.items() %}
+        <div class="category-label">{{ cat }}</div>
+        <div class="lessons-grid">
+          {% for lesson in cat_lessons %}
+            {% set prog = namespace(best_wpm=0, best_acc=0) %}
+            <div class="lesson-card">
+              <div class="lesson-card__title">{{ lesson.title }}</div>
+              <div class="lesson-card__meta">⏱ {{ lesson.duration }}s · Lvl {{ lesson.level }}</div>
+              <div class="lesson-card__meta">{{ lesson.description }}</div>
+              <div class="lesson-card__score">
+                <span class="score-chip chip-wpm">0 WPM</span>
+                <span class="score-chip chip-acc">—%</span>
+              </div>
+              <a href="{{ url_for('lesson', language='en', lesson_id=lesson.id) }}"
+                 class="btn btn--primary btn--sm" style="align-self:flex-start">
+                Commencer →
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- ── French lessons ───────────────────────────────── -->
+    <div class="card lang-panel" data-lang="fr">
+      <div class="card__title">🇫🇷 Leçons Français</div>
+      {% for cat, cat_lessons in lessons.fr.items() %}
+        <div class="category-label">{{ cat }}</div>
+        <div class="lessons-grid">
+          {% for lesson in cat_lessons %}
+            <div class="lesson-card">
+              <div class="lesson-card__title">{{ lesson.title }}</div>
+              <div class="lesson-card__meta">⏱ {{ lesson.duration }}s · Niveau {{ lesson.level }}</div>
+              <div class="lesson-card__meta">{{ lesson.description }}</div>
+              <div class="lesson-card__score">
+                <span class="score-chip chip-wpm">0 WPM</span>
+                <span class="score-chip chip-acc">—%</span>
+              </div>
+              <a href="{{ url_for('lesson', language='fr', lesson_id=lesson.id) }}"
+                 class="btn btn--primary btn--sm" style="align-self:flex-start">
+                Commencer →
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- ── Arabic lessons ───────────────────────────────── -->
+    <div class="card lang-panel" data-lang="ar">
+      <div class="card__title" dir="rtl">🇩🇿 الدروس العربية</div>
+      {% for cat, cat_lessons in lessons.ar.items() %}
+        <div class="category-label rtl" dir="rtl">{{ cat }}</div>
+        <div class="lessons-grid">
+          {% for lesson in cat_lessons %}
+            <div class="lesson-card rtl" dir="rtl">
+              <div class="lesson-card__title">{{ lesson.title }}</div>
+              <div class="lesson-card__meta">⏱ {{ lesson.duration }}ث · المستوى {{ lesson.level }}</div>
+              <div class="lesson-card__meta">{{ lesson.description }}</div>
+              <div class="lesson-card__score">
+                <span class="score-chip chip-wpm">0 كلمة/د</span>
+                <span class="score-chip chip-acc">—%</span>
+              </div>
+              <a href="{{ url_for('lesson', language='ar', lesson_id=lesson.id) }}"
+                 class="btn btn--primary btn--sm" style="align-self:flex-end">
+                ابدأ ←
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Badges -->
+    <div class="card">
+      <div class="card__title">🎖️ Badges</div>
+      <div class="badges-grid">
+        {% for badge in badge_list %}
+          <div class="badge-item {% if badge.earned %}earned{% else %}locked-badge{% endif %}"
+               title="{{ badge.desc }}">
+            <span class="badge-icon">{{ badge.icon }}</span>
+            <span class="badge-name">{{ badge.name }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+
+    <!-- Recent sessions -->
+    <div class="card">
+      <div class="card__title">📋 Sessions récentes</div>
+      {% if recent %}
+        {% for s in recent %}
+          <div class="session-row">
+            <span class="session-lang">{{ s.language.upper() }}</span>
+            <span style="flex:1;font-size:.85rem;color:var(--text-2)">{{ s.lesson_id }}</span>
+            <span class="session-wpm">{{ s.wpm|int }} WPM</span>
+            <span class="session-acc">{{ s.accuracy|int }}%</span>
+            <span class="session-date">{{ s.created_at[:10] }}</span>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p style="color:var(--text-3);font-size:.875rem">Aucune session encore. Commencez une leçon !</p>
+      {% endif %}
+    </div>
+
+  </main>
+</div>
+
+<footer>
+  TypeCraft &mdash; Entraînement trilingue à la frappe · <span>© 2025</span>
+</footer>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

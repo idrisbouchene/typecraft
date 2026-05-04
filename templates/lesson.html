@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="{{ language }}" {% if language == 'ar' %}dir="rtl"{% endif %}>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ lesson.title }} — TypeCraft</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
+  <div class="navbar__nav">
+    <a href="{{ url_for('dashboard') }}" class="navbar__link">← Dashboard</a>
+    <span style="font-size:.8rem;color:var(--text-3)">
+      {{ user['username'] }} · Lvl {{ user['level'] }}
+    </span>
+  </div>
+</nav>
+
+<!-- LESSON PAGE -->
+<div class="lesson-page">
+
+  <!-- Header -->
+  <div class="lesson-header">
+    <div class="lesson-title-area">
+      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:.4rem">
+        {{ lesson.category }} · {{ language.upper() }}
+      </div>
+      <h1>{{ lesson.title }}</h1>
+      <p>{{ lesson.description }}</p>
+    </div>
+    <div class="lesson-metrics">
+      <div class="metric-box">
+        <div class="metric-val wpm-val" id="metric-wpm">0</div>
+        <div class="metric-key">WPM</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val acc-val" id="metric-acc">100%</div>
+        <div class="metric-key">Précision</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val err-val" id="metric-err">0</div>
+        <div class="metric-key">Erreurs</div>
+      </div>
+      <div class="metric-box">
+        <div class="metric-val time-val" id="metric-time">00:00</div>
+        <div class="metric-key">Temps</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Progress bar -->
+  <div class="lesson-progress-bar">
+    <div class="lesson-progress-fill" id="lesson-progress-fill" style="width:0%"></div>
+  </div>
+
+  <!-- Typing area -->
+  <div class="typing-container">
+
+    <!-- Text display -->
+    <div id="text-display"
+         class="text-display {% if language == 'ar' %}ar-text{% endif %}"
+         data-lesson-id="{{ lesson.id }}"
+         data-language="{{ language }}"
+         data-text="{{ lesson.content }}"
+         {% if language == 'ar' %}dir="rtl"{% endif %}>
+      <!-- Characters injected by JS -->
+    </div>
+
+    <!-- Capture area (invisible input technique) -->
+    <div id="typing-capture" class="typing-capture">
+    </div>
+
+    <!-- Keyboard hints for key lessons -->
+    {% if lesson.category == 'keys' %}
+    <div class="keyboard-hint" id="keyboard-hint">
+      {% if language == 'en' %}
+        {% for key in ['a','s','d','f','g','h','j','k','l'] %}
+          <div class="key-hint" data-key="{{ key }}">{{ key.upper() }}</div>
+        {% endfor %}
+      {% elif language == 'fr' %}
+        {% for key in ['q','s','d','f','g','h','j','k','l','m'] %}
+          <div class="key-hint" data-key="{{ key }}">{{ key.upper() }}</div>
+        {% endfor %}
+      {% elif language == 'ar' %}
+        <div style="color:var(--text-3);font-size:.8rem">الصف الأوسط — ركز أصابعك على المفاتيح الرئيسية</div>
+      {% endif %}
+    </div>
+    {% endif %}
+
+  </div>
+
+  <!-- Controls -->
+  <div class="lesson-controls">
+    <button id="btn-restart" class="btn btn--ghost">🔄 Recommencer</button>
+    <button id="btn-skip"    class="btn btn--ghost">⏭ Passer</button>
+    <a href="{{ url_for('dashboard') }}" class="btn btn--ghost">🏠 Dashboard</a>
+  </div>
+
+  <!-- Tips -->
+  <div style="margin-top:2rem;padding:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg)">
+    <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-3);margin-bottom:.75rem">
+      💡 Conseils
+    </div>
+    <ul style="color:var(--text-2);font-size:.875rem;line-height:1.8;padding-left:1.25rem">
+      <li>Gardez vos poignets légèrement surélevés au-dessus du clavier.</li>
+      <li>Regardez l'écran, pas vos doigts — c'est le secret du touch typing !</li>
+      <li>La précision d'abord, la vitesse vient naturellement avec la pratique.</li>
+      <li>Faites des pauses régulières pour éviter la fatigue.</li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- ═══ RESULTS MODAL ══════════════════════════════════════ -->
+<div class="modal-overlay" id="results-modal">
+  <div class="modal">
+    <div class="modal__title">🎉 Leçon terminée !</div>
+
+    <div class="modal__results">
+      <div class="result-item">
+        <div class="result-val" id="res-wpm" style="color:var(--cyan)">0</div>
+        <div class="result-key">Mots / min</div>
+      </div>
+      <div class="result-item">
+        <div class="result-val" id="res-acc" style="color:var(--green)">0%</div>
+        <div class="result-key">Précision</div>
+      </div>
+      <div class="result-item">
+        <div class="result-val" id="res-err" style="color:var(--red)">0</div>
+        <div class="result-key">Erreurs</div>
+      </div>
+      <div class="result-item">
+        <div class="result-val" id="res-time" style="color:var(--amber)">0:00</div>
+        <div class="result-key">Durée</div>
+      </div>
+    </div>
+
+    <div class="modal__xp">
+      <span id="res-xp">+0 XP</span> · <span id="res-level">Niveau 1</span>
+    </div>
+
+    <!-- New badges -->
+    <div class="modal__badges" id="res-badges" style="display:none"></div>
+
+    <div class="modal__actions">
+      <button id="btn-restart" class="btn btn--primary" onclick="document.getElementById('results-modal').classList.remove('show'); window.location.reload()">
+        🔄 Réessayer
+      </button>
+      <a href="{{ url_for('dashboard') }}" class="btn btn--ghost">
+        🏠 Dashboard
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
