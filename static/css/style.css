@@ -824,3 +824,307 @@ footer span { color: var(--cyan); }
   .modal__results { grid-template-columns: 1fr 1fr; }
   .text-display { font-size: 1rem; }
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ██  VIRTUAL KEYBOARD  ██
+   Addition v2 — s'ajoute après le CSS existant
+═══════════════════════════════════════════════════════════ */
+
+/* ── Conteneur global ─────────────────────────────────── */
+.vkb {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1rem 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  user-select: none;
+  overflow-x: auto;
+}
+
+.vkb__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.vkb__label {
+  font-size: .7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-3);
+}
+.vkb__toggle {
+  font-size: .72rem;
+  color: var(--text-2);
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: .2rem .75rem;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+.vkb__toggle:hover { border-color: var(--cyan); color: var(--cyan); }
+
+/* ── Rangées ────────────────────────────────────────────── */
+.vkb__rows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .45rem;
+}
+.vkb__row {
+  display: flex;
+  gap: .35rem;
+  flex-wrap: nowrap;
+}
+
+/* ── Touche de base ─────────────────────────────────────── */
+.vkey {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  background: var(--bg-3);
+  border: 1px solid rgba(255,255,255,.08);
+  border-bottom: 3px solid rgba(0,0,0,.4);
+  font-family: var(--font-mono);
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--text-2);
+  cursor: default;
+  transition:
+    background .08s ease,
+    color .08s ease,
+    transform .08s ease,
+    box-shadow .08s ease;
+  flex-shrink: 0;
+}
+
+/* Touche large */
+.vkey--wide  { min-width: 3.8rem; }
+.vkey--xl    { min-width: 5.2rem; }
+.vkey--space { min-width: 10rem; }
+.vkey--backspace { min-width: 4.2rem; font-size: .65rem; }
+
+/* Caractère secondaire (Shift) */
+.vkey__alt {
+  position: absolute;
+  top: 3px; right: 5px;
+  font-size: .55rem;
+  color: var(--text-3);
+  line-height: 1;
+}
+
+/* ── États ──────────────────────────────────────────────── */
+
+/* Rangée home : teinte légère */
+.vkey--home {
+  background: var(--bg-2);
+  border-color: rgba(0,212,255,.12);
+}
+/* Pastille finger guide sur F et J */
+.vkey--guide::after {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  width: 6px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--cyan);
+  opacity: .6;
+}
+
+/* Pressed — physique */
+.vkey.pressed {
+  background: rgba(0,212,255,.18);
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: 0 0 14px rgba(0,212,255,.35);
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+}
+
+/* Correct (la touche attendue vient d'être bien tapée) */
+.vkey.correct-flash {
+  background: rgba(0,230,118,.18);
+  border-color: var(--green);
+  color: var(--green);
+  box-shadow: 0 0 12px rgba(0,230,118,.3);
+}
+
+/* Erreur */
+.vkey.error-flash {
+  background: rgba(255,71,87,.18);
+  border-color: var(--red);
+  color: var(--red);
+  box-shadow: 0 0 12px rgba(255,71,87,.3);
+}
+
+/* Touche suivante suggérée (next-key hint) */
+.vkey.next-key {
+  background: rgba(255,184,0,.1);
+  border-color: rgba(255,184,0,.4);
+  color: var(--amber);
+  animation: nextKeyPulse 1.4s ease-in-out infinite;
+}
+
+@keyframes nextKeyPulse {
+  0%,100% { box-shadow: 0 0 0 0 rgba(255,184,0,.0); }
+  50%     { box-shadow: 0 0 0 5px rgba(255,184,0,.2); }
+}
+
+/* ── Doigts colorés (optionnel) ─────────────────────────── */
+.vkey[data-finger="pinky-l"]  { --fcolor: #e879f9; }
+.vkey[data-finger="ring-l"]   { --fcolor: #818cf8; }
+.vkey[data-finger="middle-l"] { --fcolor: #38bdf8; }
+.vkey[data-finger="index-l"]  { --fcolor: #34d399; }
+.vkey[data-finger="index-r"]  { --fcolor: #fb923c; }
+.vkey[data-finger="middle-r"] { --fcolor: #38bdf8; }
+.vkey[data-finger="ring-r"]   { --fcolor: #818cf8; }
+.vkey[data-finger="pinky-r"]  { --fcolor: #e879f9; }
+.vkey[data-finger="thumb"]    { --fcolor: #94a3b8; }
+
+.vkb.show-fingers .vkey[data-finger] {
+  border-top: 2px solid var(--fcolor);
+}
+
+/* ── Hands diagram ──────────────────────────────────────── */
+.vkb__hands {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: .75rem;
+  font-size: .7rem;
+  color: var(--text-3);
+}
+.vkb__hand { text-align: center; }
+.hand-icon { font-size: 1.4rem; margin-bottom: .2rem; }
+
+/* ═══════════════════════════════════════════════════════════
+   ██  LEVEL SYSTEM  ██
+═══════════════════════════════════════════════════════════ */
+
+/* Indicateur de niveau dans la leçon */
+.lesson-level-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .3rem .85rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+}
+.level-badge-1 { background: rgba(0,230,118,.1);  border: 1px solid rgba(0,230,118,.3);  color: var(--green);  }
+.level-badge-2 { background: rgba(0,212,255,.1);  border: 1px solid rgba(0,212,255,.3);  color: var(--cyan);   }
+.level-badge-3 { background: rgba(255,184,0,.1);  border: 1px solid rgba(255,184,0,.3);  color: var(--amber);  }
+.level-badge-4 { background: rgba(168,85,247,.1); border: 1px solid rgba(168,85,247,.3); color: var(--purple); }
+
+/* Progress des niveaux dans le dashboard */
+.levels-roadmap {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  margin-top: .5rem;
+}
+.level-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.level-dot {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .75rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  background: var(--bg-2);
+  color: var(--text-3);
+  transition: all var(--transition);
+}
+.level-dot.done   { background: var(--green);  border-color: var(--green);  color: var(--bg-0); }
+.level-dot.active { background: var(--cyan);   border-color: var(--cyan);   color: var(--bg-0); box-shadow: 0 0 12px var(--glow-c); }
+.level-dot.locked { opacity: .4; }
+
+.level-row__info { flex: 1; }
+.level-row__title { font-size: .875rem; font-weight: 700; }
+.level-row__sub   { font-size: .75rem;  color: var(--text-3); }
+.level-row__bar {
+  height: 4px;
+  background: var(--bg-2);
+  border-radius: 999px;
+  margin-top: .35rem;
+  overflow: hidden;
+}
+.level-row__bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--cyan), var(--purple));
+  transition: width .8s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── Transition overlay entre niveaux ─────────────────── */
+.level-up-banner {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  background: linear-gradient(135deg, rgba(0,212,255,.12), rgba(168,85,247,.12));
+  border-bottom: 1px solid rgba(0,212,255,.25);
+  backdrop-filter: blur(16px);
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--cyan);
+  transform: translateY(-100%);
+  transition: transform .4s cubic-bezier(.4,0,.2,1);
+}
+.level-up-banner.show { transform: translateY(0); }
+.level-up-banner .lu-icon { font-size: 1.5rem; }
+
+/* ── Next lesson card ────────────────────────────────── */
+.next-lesson-card {
+  background: linear-gradient(135deg, rgba(0,212,255,.07), rgba(168,85,247,.07));
+  border: 1px solid rgba(0,212,255,.2);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.next-lesson-card__title { font-weight: 700; font-size: .95rem; }
+.next-lesson-card__sub   { font-size: .8rem; color: var(--text-2); margin-top: .2rem; }
+
+/* ── Responsive keyboard ────────────────────────────── */
+@media(max-width: 700px) {
+  .vkey {
+    min-width: 1.9rem;
+    height: 1.9rem;
+    font-size: .65rem;
+    border-radius: 5px;
+  }
+  .vkey--wide     { min-width: 2.8rem; }
+  .vkey--xl       { min-width: 3.6rem; }
+  .vkey--space    { min-width: 7rem; }
+  .vkey--backspace{ min-width: 2.8rem; }
+  .vkey__alt      { display: none; }
+  .vkb { padding: .75rem .5rem; }
+}

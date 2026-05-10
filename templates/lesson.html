@@ -8,6 +8,9 @@
 </head>
 <body>
 
+<!-- ── Level-up banner (caché par défaut, affiché via JS) ─ -->
+<div class="level-up-banner" id="level-up-banner"></div>
+
 <!-- NAVBAR -->
 <nav class="navbar">
   <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
@@ -25,8 +28,15 @@
   <!-- Header -->
   <div class="lesson-header">
     <div class="lesson-title-area">
-      <div style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3);margin-bottom:.4rem">
-        {{ lesson.category }} · {{ language.upper() }}
+      <div style="display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem;flex-wrap:wrap">
+        <!-- Catégorie + langue -->
+        <span style="font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-3)">
+          {{ lesson.category }} · {{ language.upper() }}
+        </span>
+        <!-- ▶ Badge de niveau (v2) -->
+        <span id="lesson-level-badge" class="lesson-level-badge level-badge-{{ lesson.level }}">
+          Niveau {{ lesson.level }}
+        </span>
       </div>
       <h1>{{ lesson.title }}</h1>
       <p>{{ lesson.description }}</p>
@@ -59,56 +69,71 @@
   <!-- Typing area -->
   <div class="typing-container">
 
-    <!-- Text display -->
+    <!-- Text display — data-level ajouté pour LevelSystem (v2) -->
     <div id="text-display"
          class="text-display {% if language == 'ar' %}ar-text{% endif %}"
          data-lesson-id="{{ lesson.id }}"
          data-language="{{ language }}"
          data-text="{{ lesson.content }}"
+         data-level="{{ lesson.level }}"
          {% if language == 'ar' %}dir="rtl"{% endif %}>
       <!-- Characters injected by JS -->
     </div>
 
-    <!-- Capture area (invisible input technique) -->
-    <div id="typing-capture" class="typing-capture">
-    </div>
-
-    <!-- Keyboard hints for key lessons -->
-    {% if lesson.category == 'keys' %}
-    <div class="keyboard-hint" id="keyboard-hint">
-      {% if language == 'en' %}
-        {% for key in ['a','s','d','f','g','h','j','k','l'] %}
-          <div class="key-hint" data-key="{{ key }}">{{ key.upper() }}</div>
-        {% endfor %}
-      {% elif language == 'fr' %}
-        {% for key in ['q','s','d','f','g','h','j','k','l','m'] %}
-          <div class="key-hint" data-key="{{ key }}">{{ key.upper() }}</div>
-        {% endfor %}
-      {% elif language == 'ar' %}
-        <div style="color:var(--text-3);font-size:.8rem">الصف الأوسط — ركز أصابعك على المفاتيح الرئيسية</div>
-      {% endif %}
-    </div>
-    {% endif %}
+    <!-- Capture area -->
+    <div id="typing-capture" class="typing-capture"></div>
 
   </div>
 
+  <!-- ▶ VIRTUAL KEYBOARD (v2) — le JS crée le clavier ici -->
+  <div id="vkb-container"></div>
+
   <!-- Controls -->
-  <div class="lesson-controls">
+  <div class="lesson-controls" style="margin-top:1.5rem">
     <button id="btn-restart" class="btn btn--ghost">🔄 Recommencer</button>
     <button id="btn-skip"    class="btn btn--ghost">⏭ Passer</button>
     <a href="{{ url_for('dashboard') }}" class="btn btn--ghost">🏠 Dashboard</a>
   </div>
 
+  <!-- ▶ Carte niveau suivant (v2) -->
+  {% set next_level = lesson.level + 1 %}
+  {% if next_level <= 4 %}
+  <div class="next-lesson-card">
+    <div>
+      <div class="next-lesson-card__title">🔓 Niveau {{ next_level }} vous attend</div>
+      <div class="next-lesson-card__sub">
+        Terminez avec ≥ 70% de précision et ≥ 15 WPM pour débloquer le niveau suivant.
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:.5rem">
+      <span class="lesson-level-badge level-badge-{{ next_level }}">Niveau {{ next_level }}</span>
+    </div>
+  </div>
+  {% endif %}
+
+  <!-- ▶ Roadmap des niveaux (v2) -->
+  <div class="card" style="margin-top:1.5rem">
+    <div class="card__title">🗺️ Votre progression</div>
+    <div id="level-roadmap"><!-- rempli par LevelSystem --></div>
+  </div>
+
   <!-- Tips -->
-  <div style="margin-top:2rem;padding:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg)">
+  <div style="margin-top:1.5rem;padding:1.25rem;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-lg)">
     <div style="font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--text-3);margin-bottom:.75rem">
       💡 Conseils
     </div>
     <ul style="color:var(--text-2);font-size:.875rem;line-height:1.8;padding-left:1.25rem">
-      <li>Gardez vos poignets légèrement surélevés au-dessus du clavier.</li>
-      <li>Regardez l'écran, pas vos doigts — c'est le secret du touch typing !</li>
-      <li>La précision d'abord, la vitesse vient naturellement avec la pratique.</li>
-      <li>Faites des pauses régulières pour éviter la fatigue.</li>
+      {% if language == 'ar' %}
+        <li style="direction:rtl">ابقِ معصميك مرفوعَين قليلاً فوق لوحة المفاتيح.</li>
+        <li style="direction:rtl">انظر إلى الشاشة لا إلى أصابعك — هذا سر الطباعة اللمسية!</li>
+        <li style="direction:rtl">الدقة أولاً، السرعة تأتي مع التدريب المستمر.</li>
+        <li style="direction:rtl">تتبع الزر المضيء على لوحة المفاتيح الافتراضية أدناه.</li>
+      {% else %}
+        <li>Gardez vos poignets légèrement surélevés au-dessus du clavier.</li>
+        <li>Regardez l'écran, pas vos doigts — c'est le secret du touch typing !</li>
+        <li>La précision d'abord, la vitesse vient naturellement avec la pratique.</li>
+        <li>Suivez la touche surlignée sur le clavier virtuel ci-dessus.</li>
+      {% endif %}
     </ul>
   </div>
 
@@ -146,7 +171,8 @@
     <div class="modal__badges" id="res-badges" style="display:none"></div>
 
     <div class="modal__actions">
-      <button id="btn-restart" class="btn btn--primary" onclick="document.getElementById('results-modal').classList.remove('show'); window.location.reload()">
+      <button class="btn btn--primary"
+        onclick="document.getElementById('results-modal').classList.remove('show'); window.location.reload()">
         🔄 Réessayer
       </button>
       <a href="{{ url_for('dashboard') }}" class="btn btn--ghost">

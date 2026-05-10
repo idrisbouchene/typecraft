@@ -32,6 +32,22 @@
         "description": "Practice the bottom row: Z X C V B N M",
         "content": "zzz xxx ccc vvv bbb nnn mmm zxcv bnm zxcvbnm bnmzxcv zxb cvn mnb zxcvbnm",
         "duration": 90
+      },
+      {
+        "id": "en_keys_5",
+        "title": "Full Keyboard — All Rows",
+        "level": 3,
+        "description": "Combine all rows: type letters from every row fluently",
+        "content": "the fox and dog jump over a lazy cat quick brown pack my box with five dozen jugs of liquid",
+        "duration": 120
+      },
+      {
+        "id": "en_keys_6",
+        "title": "Numbers & Symbols",
+        "level": 3,
+        "description": "Practice numbers and common symbols on the top row",
+        "content": "1234 5678 90 123 456 789 100 2024 abc123 test99 code42 user1 pass2024",
+        "duration": 120
       }
     ],
     "words": [
@@ -123,6 +139,22 @@
         "description": "Pratiquez la rangée inférieure : W X C V B N",
         "content": "www xxx ccc vvv bbb nnn wxcv bn wxcvbn bnwxcv wxb cvn nb wxcvbn",
         "duration": 90
+      },
+      {
+        "id": "fr_keys_4",
+        "title": "Clavier Complet — Toutes les rangées",
+        "level": 3,
+        "description": "Combinez les trois rangées pour taper des mots courants",
+        "content": "le chat et le chien courent dans le jardin avec les enfants heureux sous le soleil bleu",
+        "duration": 120
+      },
+      {
+        "id": "fr_keys_5",
+        "title": "Chiffres et Symboles",
+        "level": 3,
+        "description": "Pratiquez les chiffres et symboles courants",
+        "content": "1234 5678 90 2024 code42 test99 prix100 abc123 user1 email2",
+        "duration": 120
       }
     ],
     "words": [
@@ -198,6 +230,22 @@
         "description": "تدرب على أحرف الصف السفلي",
         "content": "ز ش س ي ب ل ا ت ن م زش سي بل ات نم زشس يبل اتن زشسيبلاتنم",
         "duration": 90
+      },
+      {
+        "id": "ar_keys_4",
+        "title": "لوحة كاملة — جميع الصفوف",
+        "level": 3,
+        "description": "اجمع الصفوف الثلاثة وتدرب على كلمات عربية شائعة",
+        "content": "بسم الله الرحمن الرحيم العلم نور والجهل ظلام اقرأ باسم ربك الذي خلق",
+        "duration": 120
+      },
+      {
+        "id": "ar_keys_5",
+        "title": "أرقام وتحديات",
+        "level": 3,
+        "description": "تدرب على الأرقام والكلمات المعقدة",
+        "content": "2024 برنامج رقم 100 كود 42 اختبار 99 مستخدم 1 بيانات 500",
+        "duration": 120
       }
     ],
     "words": [
