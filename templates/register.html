@@ -1,65 +1,53 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription — TypeCraft</title>
+  <title>Create Account — TypeCraft</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-
 <nav class="navbar">
   <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
-  <div class="navbar__nav">
-    <a href="{{ url_for('index') }}" class="navbar__link">Accueil</a>
-  </div>
+  <div class="navbar__nav"><a href="{{ url_for('index') }}" class="navbar__link">Home</a></div>
 </nav>
-
 <div class="auth-page">
   <div class="auth-card">
-    <h1 class="auth-card__title">Créer un compte 🚀</h1>
-    <p class="auth-card__sub">Rejoignez TypeCraft et commencez à taper comme un pro</p>
-
+    <h1 class="auth-card__title">Create Account 🚀</h1>
+    <p class="auth-card__sub">Join TypeCraft and start typing like a pro</p>
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% for cat, msg in messages %}
         <div class="flash flash--{{ cat }}">{{ msg }}</div>
       {% endfor %}
     {% endwith %}
-
     <form method="POST" action="{{ url_for('register') }}">
       <div class="form-group">
-        <label class="form-label" for="username">Nom d'utilisateur</label>
+        <label class="form-label" for="username">Username</label>
         <input class="form-input" type="text" id="username" name="username"
-               placeholder="votre_pseudo" required minlength="3" maxlength="30"
-               autocomplete="username">
+               placeholder="your_username" required minlength="3" maxlength="30">
       </div>
       <div class="form-group">
-        <label class="form-label" for="email">Adresse e-mail</label>
+        <label class="form-label" for="email">Email Address</label>
         <input class="form-input" type="email" id="email" name="email"
-               placeholder="vous@exemple.com" required autocomplete="email">
+               placeholder="you@example.com" required>
       </div>
       <div class="form-group">
-        <label class="form-label" for="password">Mot de passe</label>
+        <label class="form-label" for="password">Password</label>
         <input class="form-input" type="password" id="password" name="password"
-               placeholder="Minimum 6 caractères" required minlength="6"
-               autocomplete="new-password">
+               placeholder="Minimum 6 characters" required minlength="6">
       </div>
       <div class="form-group">
-        <label class="form-label" for="confirm_password">Confirmer le mot de passe</label>
+        <label class="form-label" for="confirm_password">Confirm Password</label>
         <input class="form-input" type="password" id="confirm_password" name="confirm_password"
-               placeholder="Répétez le mot de passe" required autocomplete="new-password">
+               placeholder="Repeat password" required>
       </div>
-      <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; margin-top:.5rem">
-        Créer mon compte ✨
+      <button type="submit" class="btn btn--primary" style="width:100%;justify-content:center;margin-top:.5rem">
+        Create Account ✨
       </button>
     </form>
-
-    <div class="auth-switch">
-      Déjà inscrit ? <a href="{{ url_for('login') }}">Se connecter</a>
-    </div>
+    <div class="auth-switch">Already have an account? <a href="{{ url_for('login') }}">Sign in</a></div>
   </div>
 </div>
-
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>
 </html>

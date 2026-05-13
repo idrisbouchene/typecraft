@@ -1,112 +1,92 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TypeCraft — Maîtrisez la frappe au clavier</title>
+  <title>TypeCraft — Master Touch Typing</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <a href="{{ url_for('index') }}" class="navbar__logo">Type<span>Craft</span></a>
   <div class="navbar__nav">
     {% if user %}
-      <a href="{{ url_for('dashboard') }}" class="navbar__link">Tableau de bord</a>
-      <a href="{{ url_for('logout') }}" class="btn btn--ghost btn--sm">Déconnexion</a>
+      <a href="{{ url_for('dashboard') }}" class="navbar__link">Dashboard</a>
+      <a href="{{ url_for('logout') }}" class="btn btn--ghost btn--sm">Sign Out</a>
     {% else %}
-      <a href="{{ url_for('login') }}" class="navbar__link">Connexion</a>
-      <a href="{{ url_for('register') }}" class="btn btn--primary btn--sm">Commencer</a>
+      <a href="{{ url_for('login') }}" class="navbar__link">Sign In</a>
+      <a href="{{ url_for('register') }}" class="btn btn--primary btn--sm">Get Started</a>
     {% endif %}
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero__glow"></div>
-  <div style="position:relative; z-index:1">
-    <div class="hero__badge">
-      🌍 &nbsp; Arabe · Anglais · Français
-    </div>
+  <div style="position:relative;z-index:1">
+    <div class="hero__badge">🌍 &nbsp; Arabic · English · French</div>
     <h1 class="hero__title">
-      Tapez plus vite,<br>
-      <span class="accent">sans regarder.</span>
+      Type faster,<br><span class="accent">without looking.</span>
     </h1>
     <p class="hero__subtitle">
-      TypeCraft est la plateforme d'entraînement à la frappe aveugle la plus moderne.
-      Progressez à votre rythme avec des leçons adaptées, des analyses en temps réel
-      et un système de récompenses motivant.
+      TypeCraft is the most modern blind typing training platform.
+      Progress at your own pace with adaptive lessons, real-time analytics,
+      and an animated hand guide.
     </p>
     <div class="hero__cta">
       {% if user %}
-        <a href="{{ url_for('dashboard') }}" class="btn btn--primary btn--lg">Continuer l'entraînement ⚡</a>
+        <a href="{{ url_for('dashboard') }}" class="btn btn--primary btn--lg">Continue Training ⚡</a>
       {% else %}
-        <a href="{{ url_for('register') }}" class="btn btn--primary btn--lg">Créer un compte gratuit</a>
-        <a href="{{ url_for('login') }}" class="btn btn--ghost btn--lg">Se connecter</a>
+        <a href="{{ url_for('register') }}" class="btn btn--primary btn--lg">Create Free Account</a>
+        <a href="{{ url_for('login') }}" class="btn btn--ghost btn--lg">Sign In</a>
       {% endif %}
     </div>
-
     <div class="hero__stats">
-      <div>
-        <div class="hero__stat-num">3</div>
-        <div class="hero__stat-label">Langues</div>
-      </div>
-      <div>
-        <div class="hero__stat-num">40+</div>
-        <div class="hero__stat-label">Leçons</div>
-      </div>
-      <div>
-        <div class="hero__stat-num">∞</div>
-        <div class="hero__stat-label">Pratique</div>
-      </div>
+      <div><div class="hero__stat-num">3</div><div class="hero__stat-label">Languages</div></div>
+      <div><div class="hero__stat-num">40+</div><div class="hero__stat-label">Lessons</div></div>
+      <div><div class="hero__stat-num">∞</div><div class="hero__stat-label">Practice</div></div>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="features">
-  <h2 class="section-title">Pourquoi TypeCraft ?</h2>
-  <p class="section-sub">Une expérience conçue pour vous faire progresser rapidement et durablement.</p>
-
+  <h2 class="section-title">Why TypeCraft?</h2>
+  <p class="section-sub">Built for speed, accuracy, and professional results.</p>
   <div class="features__grid">
     <div class="feature-card">
       <div class="feature-card__icon">⌨️</div>
-      <div class="feature-card__title">Frappe en temps réel</div>
-      <div class="feature-card__desc">Chaque caractère est analysé instantanément. Erreurs surlignées, curseur animé, retour visuel immédiat.</div>
+      <div class="feature-card__title">Real-time Feedback</div>
+      <div class="feature-card__desc">Every character analyzed instantly. Errors highlighted, animated cursor, immediate visual response.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-card__icon">👐</div>
+      <div class="feature-card__title">Animated Hand Guide</div>
+      <div class="feature-card__desc">Watch animated hands show you exactly which finger to use for every key — like a real instructor.</div>
     </div>
     <div class="feature-card">
       <div class="feature-card__icon">📊</div>
-      <div class="feature-card__title">Analytics WPM & Précision</div>
-      <div class="feature-card__desc">Suivez votre vitesse (mots/min), votre précision et votre progression leçon par leçon.</div>
-    </div>
-    <div class="feature-card">
-      <div class="feature-card__icon">🏆</div>
-      <div class="feature-card__title">Système XP & Badges</div>
-      <div class="feature-card__desc">Gagnez de l'expérience, montez de niveau et débloquez des badges de réussite.</div>
+      <div class="feature-card__title">WPM & Accuracy Analytics</div>
+      <div class="feature-card__desc">Track your speed, accuracy and progress lesson by lesson with detailed statistics.</div>
     </div>
     <div class="feature-card">
       <div class="feature-card__icon">🌍</div>
-      <div class="feature-card__title">Trilingue</div>
-      <div class="feature-card__desc">Entraînez-vous en arabe (RTL), en anglais et en français avec des leçons adaptées à chaque langue.</div>
+      <div class="feature-card__title">Trilingual Support</div>
+      <div class="feature-card__desc">Train in Arabic (RTL), English (QWERTY), and French (AZERTY) with dedicated keyboard layouts.</div>
     </div>
     <div class="feature-card">
-      <div class="feature-card__icon">🔓</div>
-      <div class="feature-card__title">Progression par niveaux</div>
-      <div class="feature-card__desc">Les leçons avancées se débloquent automatiquement quand vous atteignez le score minimum requis.</div>
+      <div class="feature-card__icon">🏆</div>
+      <div class="feature-card__title">XP & Badges</div>
+      <div class="feature-card__desc">Earn experience points, level up and unlock achievement badges.</div>
     </div>
     <div class="feature-card">
       <div class="feature-card__icon">🔥</div>
-      <div class="feature-card__title">Streak quotidien</div>
-      <div class="feature-card__desc">Maintenez votre série de jours consécutifs et restez motivé pour pratiquer chaque jour.</div>
+      <div class="feature-card__title">Daily Streak</div>
+      <div class="feature-card__desc">Maintain your streak of consecutive days and stay motivated to practice every day.</div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  Fait avec ❤️ par <span>TypeCraft</span> — Plateforme open-source d'apprentissage de la frappe
-</footer>
+<footer>Made with ❤️ by <span>TypeCraft</span> — Open-source touch typing platform</footer>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 </body>

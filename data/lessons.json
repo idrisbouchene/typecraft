@@ -2,113 +2,87 @@
   "en": {
     "keys": [
       {
-        "id": "en_keys_1",
-        "title": "Home Row — ASDF JKL;",
-        "level": 1,
-        "description": "Master the home row keys: A S D F J K L ;",
-        "content": "aaa sss ddd fff jjj kkk lll asd fj kl asdf jkl asdfjkl asdfjkl asd jkl fff jjj",
+        "id": "en_keys_1", "title": "Home Row — ASDF JKL;",
+        "level": 1, "description": "Master the 8 home row keys: A S D F — J K L ;",
+        "content": "aaa sss ddd fff jjj kkk lll asd fjk lm asdf jkl asdfjkl asd jkl fff jjj asfj klsd",
         "duration": 60
       },
       {
-        "id": "en_keys_2",
-        "title": "Home Row Extended — GH",
-        "level": 1,
-        "description": "Add G and H to your home row practice",
-        "content": "ggg hhh asg dhj fgh jkl asdg fghj asdfgh jklhg gasd hjkl ghgh asdg fjkl ghjk",
-        "duration": 60
+        "id": "en_keys_2", "title": "Home Row + GH",
+        "level": 1, "description": "Add G and H — still on home row reach",
+        "content": "ggg hhh asg dhj fgh jkl asdg fghj asdfgh jklhg gasd hjkl ghgh asdg fjkl ghjk lkjh",
+        "duration": 75
       },
       {
-        "id": "en_keys_3",
-        "title": "Top Row — QWERTY",
-        "level": 2,
-        "description": "Practice the top row: Q W E R T Y U I O P",
-        "content": "qqq www eee rrr ttt yyy uuu iii ooo ppp qwer tyui qwerty yuiop qwertyuiop",
+        "id": "en_keys_3", "title": "Top Row — QWERTY",
+        "level": 2, "description": "Practice the top row: Q W E R T — Y U I O P",
+        "content": "qqq www eee rrr ttt yyy uuu iii ooo ppp qwer tyui qwerty yuiop qwertyuiop we ru ty",
         "duration": 90
       },
       {
-        "id": "en_keys_4",
-        "title": "Bottom Row — ZXCVBNM",
-        "level": 2,
-        "description": "Practice the bottom row: Z X C V B N M",
-        "content": "zzz xxx ccc vvv bbb nnn mmm zxcv bnm zxcvbnm bnmzxcv zxb cvn mnb zxcvbnm",
+        "id": "en_keys_4", "title": "Bottom Row — ZXCVBNM",
+        "level": 2, "description": "Practice the bottom row: Z X C V B — N M",
+        "content": "zzz xxx ccc vvv bbb nnn mmm zxcv bnm zxcvbnm bnmzxcv zxb cvn mnb zxcvbnm vbn",
         "duration": 90
       },
       {
-        "id": "en_keys_5",
-        "title": "Full Keyboard — All Rows",
-        "level": 3,
-        "description": "Combine all rows: type letters from every row fluently",
-        "content": "the fox and dog jump over a lazy cat quick brown pack my box with five dozen jugs of liquid",
+        "id": "en_keys_5", "title": "Full Keyboard",
+        "level": 3, "description": "Combine all rows fluently",
+        "content": "the fox and dog jump over lazy cat quick brown pack my box five dozen jugs liquid",
         "duration": 120
       },
       {
-        "id": "en_keys_6",
-        "title": "Numbers & Symbols",
-        "level": 3,
-        "description": "Practice numbers and common symbols on the top row",
-        "content": "1234 5678 90 123 456 789 100 2024 abc123 test99 code42 user1 pass2024",
+        "id": "en_keys_6", "title": "Numbers Row",
+        "level": 3, "description": "Practice numbers and symbols",
+        "content": "1234 5678 90 123 456 789 100 2024 1000 99 42 365 1984 777 2048",
         "duration": 120
       }
     ],
     "words": [
       {
-        "id": "en_words_1",
-        "title": "Common Words — Level 1",
-        "level": 1,
-        "description": "Practice the most common English words",
+        "id": "en_words_1", "title": "Top 100 Words — Set 1",
+        "level": 1, "description": "Most common English words",
         "content": "the and for are you that was with his they have this will your from one had but words",
         "duration": 90
       },
       {
-        "id": "en_words_2",
-        "title": "Common Words — Level 2",
-        "level": 2,
-        "description": "More frequently used English words",
-        "content": "about which when there their said each she many time has look two more write go see number way could people",
+        "id": "en_words_2", "title": "Top 100 Words — Set 2",
+        "level": 2, "description": "More frequently used English words",
+        "content": "about which when there their said each she many time has look two more write go see number",
         "duration": 90
       },
       {
-        "id": "en_words_3",
-        "title": "Action Verbs",
-        "level": 2,
-        "description": "Practice common action verbs",
-        "content": "run jump sit stand walk talk think learn create build make find keep give work play sleep eat drink read write",
+        "id": "en_words_3", "title": "Action Verbs",
+        "level": 2, "description": "Common action verbs",
+        "content": "run jump sit stand walk talk think learn create build make find keep give work play read write",
         "duration": 90
       }
     ],
     "sentences": [
       {
-        "id": "en_sent_1",
-        "title": "Simple Sentences",
-        "level": 2,
-        "description": "Practice typing complete sentences",
-        "content": "The quick brown fox jumps over the lazy dog. She sells sea shells by the sea shore. How much wood would a woodchuck chuck.",
+        "id": "en_sent_1", "title": "Simple Sentences",
+        "level": 2, "description": "Complete short sentences",
+        "content": "The quick brown fox jumps over the lazy dog. She sells sea shells by the sea shore.",
         "duration": 120
       },
       {
-        "id": "en_sent_2",
-        "title": "Tech Sentences",
-        "level": 3,
-        "description": "Technology-themed sentences",
-        "content": "The computer is a powerful tool for learning. Typing fast requires daily practice and focus. Software developers write code to build applications. The internet connects billions of people worldwide.",
+        "id": "en_sent_2", "title": "Tech Sentences",
+        "level": 3, "description": "Technology-themed sentences",
+        "content": "The computer is a powerful tool for learning. Typing fast requires daily practice and focus.",
         "duration": 120
       }
     ],
     "paragraphs": [
       {
-        "id": "en_para_1",
-        "title": "The Power of Practice",
-        "level": 3,
-        "description": "A motivational paragraph about learning",
-        "content": "Learning to type without looking at the keyboard is a skill that takes time and dedication. Every expert was once a beginner who refused to give up. With consistent practice, your fingers will memorize the position of every key. Speed will come naturally as accuracy improves. The journey of a thousand miles begins with a single keystroke.",
+        "id": "en_para_1", "title": "The Power of Practice",
+        "level": 3, "description": "A motivational passage",
+        "content": "Learning to type without looking at the keyboard is a skill that takes time and dedication. Every expert was once a beginner who refused to give up. With consistent practice your fingers will memorize the position of every key.",
         "duration": 180
       },
       {
-        "id": "en_para_2",
-        "title": "The Digital Age",
-        "level": 4,
-        "description": "A paragraph about technology",
-        "content": "We live in a world increasingly driven by technology. Computers, smartphones, and tablets have transformed how we work, communicate, and learn. Touch typing is no longer just a skill for secretaries—it is essential for everyone in the modern workforce. Those who can type quickly and accurately gain a significant advantage in productivity and efficiency.",
+        "id": "en_para_2", "title": "The Digital Age",
+        "level": 4, "description": "A passage about technology",
+        "content": "We live in a world increasingly driven by technology. Computers smartphones and tablets have transformed how we work communicate and learn. Touch typing is essential for everyone in the modern workforce.",
         "duration": 180
       }
     ]
@@ -117,89 +91,57 @@
   "fr": {
     "keys": [
       {
-        "id": "fr_keys_1",
-        "title": "Rangée Centrale — QSDF JKL",
-        "level": 1,
-        "description": "Maîtrisez les touches centrales du clavier AZERTY",
-        "content": "qqq sss ddd fff jjj kkk lll qsd fjk lm qsdf jkl qsdfjkl qsdfjkl qsd jkl fff jjj",
+        "id": "fr_keys_1", "title": "Home Row — QSDF JKL",
+        "level": 1, "description": "Master the AZERTY home row: Q S D F — J K L M",
+        "content": "qqq sss ddd fff jjj kkk lll mmm qsd fjk lm qsdf jklm qsdfjklm qsd jkl fff jjj",
         "duration": 60
       },
       {
-        "id": "fr_keys_2",
-        "title": "Rangée du Haut — AZERTY",
-        "level": 1,
-        "description": "Pratiquez la rangée supérieure : A Z E R T Y U I O P",
+        "id": "fr_keys_2", "title": "Top Row — AZERTY",
+        "level": 2, "description": "Practice: A Z E R T — Y U I O P",
         "content": "aaa zzz eee rrr ttt yyy uuu iii ooo ppp azert yuio azerty yuiop azertyuiop",
         "duration": 90
       },
       {
-        "id": "fr_keys_3",
-        "title": "Rangée du Bas — WXCVBN",
-        "level": 2,
-        "description": "Pratiquez la rangée inférieure : W X C V B N",
+        "id": "fr_keys_3", "title": "Bottom Row — WXCVBN",
+        "level": 2, "description": "Practice the bottom row: W X C V B N",
         "content": "www xxx ccc vvv bbb nnn wxcv bn wxcvbn bnwxcv wxb cvn nb wxcvbn",
         "duration": 90
       },
       {
-        "id": "fr_keys_4",
-        "title": "Clavier Complet — Toutes les rangées",
-        "level": 3,
-        "description": "Combinez les trois rangées pour taper des mots courants",
+        "id": "fr_keys_4", "title": "Full Keyboard",
+        "level": 3, "description": "Combine all rows",
         "content": "le chat et le chien courent dans le jardin avec les enfants heureux sous le soleil bleu",
-        "duration": 120
-      },
-      {
-        "id": "fr_keys_5",
-        "title": "Chiffres et Symboles",
-        "level": 3,
-        "description": "Pratiquez les chiffres et symboles courants",
-        "content": "1234 5678 90 2024 code42 test99 prix100 abc123 user1 email2",
         "duration": 120
       }
     ],
     "words": [
       {
-        "id": "fr_words_1",
-        "title": "Mots Courants — Niveau 1",
-        "level": 1,
-        "description": "Les mots français les plus utilisés",
+        "id": "fr_words_1", "title": "Common Words — Level 1",
+        "level": 1, "description": "Most used French words",
         "content": "le la les des une un et en du de se ce qui que par sur avec pour pas plus tout dans",
         "duration": 90
       },
       {
-        "id": "fr_words_2",
-        "title": "Mots Courants — Niveau 2",
-        "level": 2,
-        "description": "Mots français de niveau intermédiaire",
-        "content": "aussi bien alors comme faire avoir être aller voir venir prendre donner savoir pouvoir vouloir devoir trouver croire penser",
+        "id": "fr_words_2", "title": "Common Words — Level 2",
+        "level": 2, "description": "Intermediate French words",
+        "content": "aussi bien alors comme faire avoir etre aller voir venir prendre donner savoir pouvoir vouloir",
         "duration": 90
       }
     ],
     "sentences": [
       {
-        "id": "fr_sent_1",
-        "title": "Phrases Simples",
-        "level": 2,
-        "description": "Pratiquez des phrases complètes en français",
-        "content": "Portez ce vieux whisky au juge blond qui fume. Le chat dort sur le canapé rouge. La vie est belle quand on fait ce qu'on aime.",
-        "duration": 120
-      },
-      {
-        "id": "fr_sent_2",
-        "title": "Phrases sur la Technologie",
-        "level": 3,
-        "description": "Phrases thématiques sur la technologie",
-        "content": "L'ordinateur est un outil puissant pour apprendre. La frappe rapide requiert de la pratique quotidienne. Les développeurs créent des logiciels pour résoudre des problèmes. Internet relie des milliards de personnes dans le monde entier.",
+        "id": "fr_sent_1", "title": "Simple Sentences",
+        "level": 2, "description": "Practice complete French sentences",
+        "content": "La vie est belle quand on fait ce que l on aime. Le chat dort sur le canape rouge.",
         "duration": 120
       }
     ],
     "paragraphs": [
       {
-        "id": "fr_para_1",
-        "title": "La Puissance de la Pratique",
-        "level": 3,
-        "description": "Un paragraphe motivant sur l'apprentissage",
-        "content": "Apprendre à taper sans regarder le clavier est une compétence qui demande du temps et de la persévérance. Chaque expert était autrefois un débutant qui a refusé d'abandonner. Avec une pratique régulière, vos doigts mémoriseront la position de chaque touche. La vitesse viendra naturellement à mesure que la précision s'améliorera.",
+        "id": "fr_para_1", "title": "The Power of Practice",
+        "level": 3, "description": "A motivational passage in French",
+        "content": "Apprendre a taper sans regarder le clavier est une competence qui demande du temps et de la perseverance. Chaque expert etait autrefois un debutant qui a refuse d abandonner.",
         "duration": 180
       }
     ]
@@ -209,86 +151,110 @@
     "keys": [
       {
         "id": "ar_keys_1",
-        "title": "الصف الأوسط — أ س د ف",
+        "title": "الصف الأوسط — الأساسيات",
         "level": 1,
-        "description": "تعلم أصابعك على الأحرف الأساسية في الصف الأوسط",
-        "content": "ا س د ف ج ك ل م اسد فجك لم اسدف جكل اسدفجكل اسد جكل فجك اسدف",
+        "description": "ابدأ بأهم 8 حروف: ش س ي ب — ل ا ت ن (الصف الأوسط الحقيقي)",
+        "content": "شش سس يي بب لل اا تت نن شس يب لا تن شسي بلا تنم شسيب لاتن",
         "duration": 60
       },
       {
         "id": "ar_keys_2",
-        "title": "الصف العلوي — ض ص ث ق",
+        "title": "الصف الأوسط — إكمال",
         "level": 1,
-        "description": "تدرب على أحرف الصف العلوي من لوحة المفاتيح",
-        "content": "ض ص ث ق ف غ ع ه خ ح ضص ثق فغ عه خح ضصث قفغ عهخ ضصثقفغعهخ",
-        "duration": 90
+        "description": "أضف م ك ط — وكرر الصف الأوسط كاملاً",
+        "content": "مم كك طط شسي بلا تنم كط شسيب لاتن مكط شسيبلاتنمكط سيب لات نمك",
+        "duration": 75
       },
       {
         "id": "ar_keys_3",
-        "title": "الصف السفلي — ز ش س",
+        "title": "الصف العلوي — ض ص ث ق ف",
         "level": 2,
-        "description": "تدرب على أحرف الصف السفلي",
-        "content": "ز ش س ي ب ل ا ت ن م زش سي بل ات نم زشس يبل اتن زشسيبلاتنم",
+        "description": "تعلم الجزء الأيسر من الصف العلوي: ض ص ث ق ف",
+        "content": "ضض صص ثث قق فف ضص ثق فض ضصث قفض صثق فضص ضصثق فضصث",
         "duration": 90
       },
       {
         "id": "ar_keys_4",
-        "title": "لوحة كاملة — جميع الصفوف",
-        "level": 3,
-        "description": "اجمع الصفوف الثلاثة وتدرب على كلمات عربية شائعة",
-        "content": "بسم الله الرحمن الرحيم العلم نور والجهل ظلام اقرأ باسم ربك الذي خلق",
-        "duration": 120
+        "title": "الصف العلوي — غ ع ه خ ح ج د",
+        "level": 2,
+        "description": "تعلم الجزء الأيمن من الصف العلوي: غ ع ه خ ح ج د",
+        "content": "غغ عع هه خخ حح جج دد غع هخ حج دغ غعه خحج دغع هخحد جغعه خحجد",
+        "duration": 90
       },
       {
         "id": "ar_keys_5",
-        "title": "أرقام وتحديات",
+        "title": "الصف السفلي — ئ ء ؤ ر ى ة و",
         "level": 3,
-        "description": "تدرب على الأرقام والكلمات المعقدة",
-        "content": "2024 برنامج رقم 100 كود 42 اختبار 99 مستخدم 1 بيانات 500",
+        "description": "تعلم الصف السفلي: ئ ء ؤ ر ى — ة و ز ظ",
+        "content": "ئئ ءء ؤؤ رر ىى ةة وو زز ظظ ئء ؤر ىة وز ظئ ئءؤ ريى ةوز ظئء",
+        "duration": 90
+      },
+      {
+        "id": "ar_keys_6",
+        "title": "الجمع بين الصفوف",
+        "level": 3,
+        "description": "تدرب على الانتقال بين الصفوف الثلاثة",
+        "content": "شبلا تنم ضصث قف غع هخ ئءؤ رى ةو شسض صيث قبف لغع هاخ تنحة وز",
         "duration": 120
       }
     ],
     "words": [
       {
         "id": "ar_words_1",
-        "title": "الكلمات الشائعة — المستوى الأول",
+        "title": "كلمات الصف الأوسط",
         "level": 1,
-        "description": "تدرب على الكلمات العربية الأكثر استخداماً",
-        "content": "في من على أن هذا إلى كان قد لا ما مع كل هو هي أو لم ذلك التي",
+        "description": "كلمات تُكتب بحروف الصف الأوسط فقط",
+        "content": "بيت كتب نال مال تلك ليل بلد سكن نبت كنت ليس بكت ملك ناب سكت",
         "duration": 90
       },
       {
         "id": "ar_words_2",
-        "title": "الكلمات الشائعة — المستوى الثاني",
-        "level": 2,
-        "description": "كلمات عربية متوسطة المستوى",
-        "content": "أيضاً حتى عند عليه لكن يمكن وقد كانت لهم منهم وهو وهي أنها وقال بعد قبل",
+        "title": "كلمات شائعة — مستوى 1",
+        "level": 1,
+        "description": "الكلمات العربية الأكثر استخداماً",
+        "content": "في من على أن هذا إلى كان قد لا ما مع كل هو هي أو لم ذلك التي",
         "duration": 90
       },
       {
         "id": "ar_words_3",
-        "title": "كلمات التقنية",
+        "title": "كلمات شائعة — مستوى 2",
         "level": 2,
+        "description": "كلمات عربية متوسطة",
+        "content": "أيضاً حتى عند عليه لكن يمكن وقد كانت لهم منهم وهو وهي أنها وقال بعد قبل",
+        "duration": 90
+      },
+      {
+        "id": "ar_words_4",
+        "title": "كلمات التقنية",
+        "level": 3,
         "description": "مصطلحات تقنية شائعة",
-        "content": "حاسوب برنامج إنترنت بيانات شبكة تقنية رقمي ذكاء اصطناعي تطبيق موقع إلكتروني",
+        "content": "حاسوب برنامج إنترنت بيانات شبكة تقنية رقمي تطبيق موقع ذكاء اصطناعي",
         "duration": 90
       }
     ],
     "sentences": [
       {
         "id": "ar_sent_1",
-        "title": "جمل بسيطة",
+        "title": "جمل بسيطة — صف أوسط",
         "level": 2,
-        "description": "تدرب على كتابة جمل كاملة باللغة العربية",
-        "content": "العلم في الصغر كالنقش على الحجر. من جد وجد ومن زرع حصد. الوقت من ذهب فلا تضيعه.",
+        "description": "جمل تعتمد على حروف الصف الأوسط",
+        "content": "بيت كبير. كتب مفيدة. ليل طويل. ملك عادل.",
         "duration": 120
       },
       {
         "id": "ar_sent_2",
-        "title": "جمل عن التقنية",
+        "title": "جمل تحفيزية",
         "level": 3,
-        "description": "جمل تقنية ومعلوماتية",
-        "content": "الحاسوب أداة قوية للتعلم والإبداع. الكتابة السريعة تتطلب التدريب اليومي المستمر. المبرمجون يكتبون الكود لبناء التطبيقات الحديثة.",
+        "description": "جمل عربية تحفيزية",
+        "content": "العلم في الصغر كالنقش على الحجر. من جد وجد ومن زرع حصد. الوقت من ذهب فلا تضيعه.",
+        "duration": 120
+      },
+      {
+        "id": "ar_sent_3",
+        "title": "جمل تقنية",
+        "level": 4,
+        "description": "جمل عن التقنية والمعلوماتية",
+        "content": "الحاسوب أداة قوية للتعلم والإبداع. الكتابة السريعة تتطلب التدريب اليومي المستمر.",
         "duration": 120
       }
     ],
@@ -296,9 +262,9 @@
       {
         "id": "ar_para_1",
         "title": "قوة التدريب",
-        "level": 3,
+        "level": 4,
         "description": "مقطع تحفيزي عن التعلم والمثابرة",
-        "content": "تعلم الكتابة دون النظر إلى لوحة المفاتيح مهارة تستحق الاستثمار. كل خبير كان في البداية مبتدئاً لم يستسلم أمام الصعاب. مع التدريب المنتظم، ستحفظ أصابعك موضع كل حرف بشكل تلقائي. ستتحسن سرعتك تلقائياً كلما ارتفعت دقتك في الكتابة. الطريق إلى الاحتراف تبدأ بضغطة مفتاح واحدة.",
+        "content": "تعلم الكتابة دون النظر إلى لوحة المفاتيح مهارة تستحق الاستثمار. كل خبير كان في البداية مبتدئاً لم يستسلم أمام الصعاب. مع التدريب المنتظم ستحفظ أصابعك موضع كل حرف بشكل تلقائي.",
         "duration": 180
       },
       {
@@ -306,7 +272,7 @@
         "title": "عصر المعلومات",
         "level": 4,
         "description": "مقطع عن التحول الرقمي",
-        "content": "نعيش في عالم يتسارع فيه التحول الرقمي بشكل غير مسبوق. أصبحت أجهزة الحاسوب والهواتف الذكية جزءاً لا يتجزأ من حياتنا اليومية. مهارة الطباعة السريعة لم تعد حكراً على المحترفين، بل باتت ضرورة للجميع في سوق العمل الحديث. من يتقن هذه المهارة يكتسب ميزة تنافسية حقيقية في الإنتاجية والكفاءة.",
+        "content": "نعيش في عالم يتسارع فيه التحول الرقمي بشكل غير مسبوق. أصبحت أجهزة الحاسوب والهواتف الذكية جزءاً لا يتجزأ من حياتنا اليومية. مهارة الطباعة السريعة باتت ضرورة للجميع في سوق العمل الحديث.",
         "duration": 180
       }
     ]
